@@ -1,0 +1,4 @@
+column_1 integer,
+column_2 float,
+column_3 varchar(50),
+column_4 boolean
