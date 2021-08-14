@@ -1,0 +1,7 @@
+id integer NOT NULL,
+year integer NOT NULL,
+dairy_cows integer NOT NULL,
+milking_cows integer NOT NULL,
+cows_avg_daily_milk real NOT NULL,
+cows_avg_lac_period_months integer NOT NULL,
+cows_total_milk bigint NOT NULL
