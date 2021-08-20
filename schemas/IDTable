@@ -1,0 +1,5 @@
+id integer NOT NULL,
+country varchar(50) NOT NULL,
+region varchar(50) NOT NULL,
+zone varchar(50) NOT NULL,
+datasource varchar(50) NOT NULL
