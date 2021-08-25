@@ -1,0 +1,4 @@
+id_auto integer NOT NULL,
+issue_code integer NOT NULL,
+issue_num integer NOT NULL,
+CONSTRAINT fk_id FOREIGN KEY(id_auto) REFERENCES ghana_idtable(id_auto)

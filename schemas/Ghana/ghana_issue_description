@@ -1,0 +1,2 @@
+issue_code integer NOT NULL,
+description varchar(255) NOT NULL
