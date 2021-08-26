@@ -1,0 +1,7 @@
+id_auto integer NOT NULL,
+total_workers integer,
+casual_workers integer,
+permanent_workers integer,
+total_females integer,
+total_males integer,
+CONSTRAINT fk_id FOREIGN KEY(id_auto) REFERENCES ghana_idtable(id_auto)
