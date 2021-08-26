@@ -6,28 +6,28 @@
 #   Date of last update: August 12, 2021
 #
 #   Notes: 
-#   1.  python3 queryTables.py -t <table name> -c Ethiopia 
+#   1.  python3 queryEthiopiaTables.py -t <table name> -c Ethiopia 
 #       Will return all records with Ethiopia from a table
 #
-#   2.  python3 queryTables.py -t <table name> -s "Ethiopia CSA Livestock PDFs"
+#   2.  python3 queryEthiopiaTables.py -t <table name> -s "Ethiopia CSA Livestock PDFs"
 #       Will return all records from the datasource of a table
 #
-#   3.  python3 queryTables.py -t <table name> -r Tigray
+#   3.  python3 queryEthiopiaTables.py -t <table name> -r Tigray
 #       Will return all records of the region Tigray from a table
 #
-#   4.  python3 queryTables.py -t <table name> -z "North Tigray"
+#   4.  python3 queryEthiopiaTables.py -t <table name> -z "North Tigray"
 #       Will return all records of the zone North Tigray from a table
 #
-#   5.  python3 queryTables.py -t <table name> -y 2020
+#   5.  python3 queryEthiopiaTables.py -t <table name> -y 2020
 #       Will return all records from 2020 of a table
 #
-#   6.  python3 queryTables.py -t <table name> -d <data field name>
+#   6.  python3 queryEthiopiaTables.py -t <table name> -d <data field name>
 #       Will return all records from a specific data field of a table
 #
-#   7.  python3 queryTables.py -t <table name> -z Tigray
+#   7.  python3 queryEthiopiaTables.py -t <table name> -z Tigray
 #       When getting data of the region itself, put the name of the region for the zone argument
 #
-#   8.  python3 queryTables.py -t cattle_dairy -r Tigray -z "North Tigray" -y 2020 -d "dairy_cows"
+#   8.  python3 queryEthiopiaTables.py -t cattle_dairy -r Tigray -z "North Tigray" -y 2020 -d "dairy_cows"
 #       This example finds the ID for record containing Tigray and North Tigray, gets the record for 2020
 #       in cattle_dairy and returns the column for dairy_cows 
 #
@@ -58,6 +58,9 @@ def buildQueryString(queries, queryStr):
         queryStr += queries[len(queries)-1]
     return queryStr
     
+# Cleans any quotes or semi-colons
+def sanitizeInput(input):
+    return input.replace("'", "").replace('"', "").replace(';', "")
 
 def main ( argv ):
     table_name = ""
@@ -70,26 +73,26 @@ def main ( argv ):
     try:
         (opts, args) = getopt.getopt ( argv,"ht:c:r:z:y:d:s:",["table=","country=","region=","zone=","year=","dfield=","datasource="] )
     except getopt.GetoptError:
-        print ( "queryTables.py -t <table name> -c <country> -r <region> -z <zone> -y <year> -d <data field name> -s <datasource>" )
+        print ( "queryEthiopiaTables.py -t <table name> -c <country> -r <region> -z <zone> -y <year> -d <data field name> -s <datasource>" )
         sys.exit(2)
     for opt, arg in opts:
         if opt == '-h':
-            print ( "queryTables.py -t <table name> -c <country> -r <region> -z <zone> -y <year> -d <data field name> -s <datasource>" )
+            print ( "queryEthiopiaTables.py -t <table name> -c <country> -r <region> -z <zone> -y <year> -d <data field name> -s <datasource>" )
             sys.exit()
         elif opt in ("-t", "--table"):
-            table_name = arg
+            table_name = sanitizeInput(arg)
         elif opt in ("-c", "--country"):
-            qcountry = arg
+            qcountry = sanitizeInput(arg)
         elif opt in ("-r", "--region"):
-            qregion = arg
+            qregion = sanitizeInput(arg)
         elif opt in ("-z", "--zone"):
-            qzone = arg
+            qzone = sanitizeInput(arg)
         elif opt in ("-y", "--year"):
-            qyear = arg
+            qyear = sanitizeInput(arg)
         elif opt in ("-d", "--dfield"):
-            dfield_name = arg
+            dfield_name = sanitizeInput(arg)
         elif opt in ("-s", "--datasource"):
-            qdatasource = arg
+            qdatasource = sanitizeInput(arg)
 #
 # Create connection and cursor    
 #
