@@ -57,5 +57,6 @@ database are not included here.  Please contact Deb Stacey for that code.
 * **Note**: for more documentation, refer to comments in files
 * `createDBFiles` directory contains all the scripts used for creating database table files from a private repo for Ethiopia CSA Livestock PDFs
     * Each bash script must be ran with its python counterpart, `nameVariants.py` and has to have access to all year folders from mentioned private repo
+    * After running the bash script, run its `load<livestock>Tables.py` counterpart, which will reset the tables and add data to them
     * **IMPORTANT**: All scripts in `createDBFiles` directory are only needed if data from the database is lost and needs to be recovered
 * `schemas` directory contains all schemas used for the database
