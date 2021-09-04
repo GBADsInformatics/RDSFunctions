@@ -1,0 +1,7 @@
+id integer NOT NULL,
+year integer NOT NULL,
+camels_total integer NOT NULL,
+male_lt_4yrs integer NOT NULL,
+male_gte_4yrs integer NOT NULL,
+female_lt_4yrs integer NOT NULL,
+female_gte_4yrs integer NOT NULL
