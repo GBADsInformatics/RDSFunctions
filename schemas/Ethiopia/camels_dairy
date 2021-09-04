@@ -1,0 +1,7 @@
+id integer NOT NULL,
+year integer NOT NULL,
+dairy_camels integer NOT NULL,
+milking_camels integer NOT NULL,
+camels_avg_daily_milk real NOT NULL,
+camels_avg_lac_period_months integer NOT NULL,
+camels_total_milk bigint NOT NULL
